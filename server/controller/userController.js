@@ -1,4 +1,4 @@
-const AirShipping = require('../Models/shippingmodel_Air');
+const AirShipping = require('../Models/shippingmodel_air');
 const SeaShipping = require('../Models/shippingmodel_sea');
 const User = require('../Models/usermodel');
 const HashServices = require('../services/hash-services');
