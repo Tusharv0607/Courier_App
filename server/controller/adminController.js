@@ -299,6 +299,32 @@ const addAirShippingDetails = async (req, res) => {
     }
 
 }
+// //add multiple deatils through sea
+
+const addMultipleAirShippingDetails = async (req, res) => {
+    
+    try {
+       
+        const shippingDetail = await AirShipping.insertMany(req.body);
+
+
+        res.status(200).json({
+            success: true,
+            message: "Successfully inserted",
+            shippingDetail
+        })
+
+
+    } catch (error) {
+        const statusCode = error.statusCode ? error.statusCode : 500
+        res.status(statusCode).json({
+            success: false,
+            message: error.message
+        })
+        console.log(error.message)
+    }
+
+}
 
 //updateAirShippingDetails
 const updateAirShippingDetails = async (req, res) => {
@@ -402,8 +428,36 @@ const addSeaShippingDetails = async (req, res) => {
 
 }
 
+//addAirShippingDetails
+const addMultipleSeaShippingDetails = async (req, res) => {
+    
+    try {
+       
+
+
+        const shippingDetail = await SeaShipping.insertMany(req.body);
+
+
+        res.status(200).json({
+            success: true,
+            message: "Successfully inserted",
+            shippingDetail
+        })
+
+
+    } catch (error) {
+        const statusCode = error.statusCode ? error.statusCode : 500
+        res.status(statusCode).json({
+            success: false,
+            message: error.message
+        })
+        console.log(error.message)
+    }
+
+}
+
 module.exports = {
     changeAdminRole, activateUser, getAllUsers, getUser, deleteUser, getAllSeaShippingDetails, getAllAirShippingDetails,
     getSeaShippingDetails, getAirShippingDetails, deleteSeaShippingDetails, deleteAirShippingDetails, addSeaShippingDetails,
-    updateAirShippingDetails, updateSeaShippingDetails, addAirShippingDetails
+    updateAirShippingDetails, updateSeaShippingDetails, addAirShippingDetails,addMultipleAirShippingDetails,addMultipleSeaShippingDetails
 }
