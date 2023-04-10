@@ -5,11 +5,13 @@ const shippingSchema_sea = new mongoose.Schema({
 
     origin: {
         type: String,
-        required: [true, "Origin is required"]
+        required: [true, "Origin is required"],
+        uppercase: true,
     },
     destination: {
         type: String,
-        required: [true, "Destination is required"]
+        required: [true, "Destination is required"],
+        uppercase:true
     },
     container_type: {
         type: String,

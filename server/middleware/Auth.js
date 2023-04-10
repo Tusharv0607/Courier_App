@@ -5,7 +5,7 @@ class Auth{
     async isAuth(req,res,next){
         try {
             const {accessToken} =req.cookies;
-          
+         /// console.log(accessToken)
         if(!accessToken||accessToken.length<=6)
             throw new Error("Please login to access resource");
 

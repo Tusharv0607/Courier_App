@@ -111,7 +111,7 @@ const deleteUser = async (req, res) => {
 
 
         const deletedUser = await User.findOneAndRemove(_id);
-        if(deletedUser.avatar){
+        if(deletedUser.avatar.public_id){
         const imageId = deletedUser.avatar.public_id;
         await cloudinary.v2.uploader.destroy(imageId);
     }

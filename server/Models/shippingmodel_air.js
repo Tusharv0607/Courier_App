@@ -5,11 +5,13 @@ const shippingSchema_Air = new mongoose.Schema({
 
     origin: {
         type: String,
-        required: [true, "Origin is required"]
+        required: [true, "Origin is required"],
+        uppercase: true
     },
     destination: {
         type: String,
-        required: [true, "Destination is required"]
+        required: [true, "Destination is required"],
+        uppercase: true
     },
     cmb: {
         type: Number,
