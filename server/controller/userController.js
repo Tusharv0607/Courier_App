@@ -56,8 +56,8 @@ const verify_otp = async (req, res) => {
         const hashotp = hashdata[0];
         const expireTime = hashdata[1];
 
-        // if (Date.now() > expireTime)
-        //     throw new ErrorHandler("OTP expired", 400);
+        if (Date.now() > expireTime)
+            throw new ErrorHandler("OTP expired", 400);
 
         const isvarified = await OtpServices.match_otp(hashotp, otp);
         if (!isvarified)

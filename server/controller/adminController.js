@@ -2,7 +2,7 @@ const AirShipping = require("../Models/shippingmodel_air");
 const SeaShipping = require("../Models/shippingmodel_sea");
 const User = require("../Models/usermodel");
 const ErrorHandler = require("../utils/ErrorHandler");
-
+const cloudinary= require('cloudinary');
 
 //activate user
 const activateUser = async (req, res) => {
@@ -111,8 +111,10 @@ const deleteUser = async (req, res) => {
 
 
         const deletedUser = await User.findOneAndRemove(_id);
+        if(deletedUser.avatar){
         const imageId = deletedUser.avatar.public_id;
         await cloudinary.v2.uploader.destroy(imageId);
+    }
 
         res.status(200).json({
             success: true,
