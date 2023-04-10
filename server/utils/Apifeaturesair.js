@@ -46,15 +46,15 @@ const Apifeaturesair = (query) => {
         $regex: JSON.parse(query.cargo_type.trim()),
         $options: "i",
     }
-    que = { ...que, cargo_type };
 
-    // let date = new Date(query.date)
-   
-    //    const valid_till_date={
-    //     $gt:  Date(date),
-    //     $lt: Date(date)
-    //    }
-    //    que = { ...que, valid_till_date };
+    que = { ...que, cargo_type };
+    let date = new Date((query.valid_till_date))
+    // console.log(date)
+      const valid_till_date={
+     
+       $gte:date
+      }
+        que = { ...que, valid_till_date };
     return que;
 }
 

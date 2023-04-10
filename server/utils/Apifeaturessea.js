@@ -2,7 +2,8 @@
 
 const Apifeaturessea = (query) => {
     let que = {}
-    if (query.origin.trim().length == 0)
+   
+    if (query.origin.length == 0)
         throw new ErrorHandler("Origin name can't empty", 400);
 
     const origin = {
@@ -12,7 +13,7 @@ const Apifeaturessea = (query) => {
     que = { ...que, origin };
 
 
-    if (query.destination.trim().length == 0)
+    if (query.destination.length == 0)
         throw new ErrorHandler("Destination name can't empty", 400);
     const destination = {
         $in: JSON.parse(query.destination.trim())
@@ -21,6 +22,7 @@ const Apifeaturessea = (query) => {
     que = { ...que, destination };
 
     //console.log(query);
+   // console.log(query)
     if (query.container_type.trim().length == 0)
         throw new ErrorHandler("container-type can't empty", 400);
     const container_type = {
@@ -29,7 +31,7 @@ const Apifeaturessea = (query) => {
     }
 
     que = { ...que, container_type };
-
+   
     if (query.gross_weight.trim().length == 0)
         throw new ErrorHandler("gross-weight can't empty", 400);
     const gross_weight = {
@@ -46,11 +48,11 @@ const Apifeaturessea = (query) => {
     }
     que = { ...que, cargo_type };
 
-     let date = new Date(query.date)
-   
+     let date = new Date((query.valid_till_date))
+     // console.log(date)
        const valid_till_date={
-        $gt: Date(date),
-        $lt: Date(date)
+      
+        $gte:date
        }
        que = { ...que, valid_till_date };
     return que;
