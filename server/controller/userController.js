@@ -151,7 +151,7 @@ const get_sea_details = async (req, res) => {
         const query = req.query;
         // console.log(query.origin)
         const que = Apifeaturessea(query);
-       // console.log(que)
+    //    console.log(que)
         // const seaPath = await SeaShipping.find(que);
         const seaPath = await SeaShipping.find(que);
 

@@ -22,7 +22,7 @@ const Apifeaturessea = (query) => {
     que = { ...que, destination };
 
     //console.log(query);
-   // console.log(query)
+ //console.log(query)
     if (query.container_type.trim().length == 0)
         throw new ErrorHandler("container-type can't empty", 400);
     const container_type = {
